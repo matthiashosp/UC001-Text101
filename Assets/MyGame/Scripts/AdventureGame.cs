@@ -12,7 +12,7 @@ using UnityEditor;
 public class AdventureGame : MonoBehaviour
 {
 
-    //private static readonly System.Random getrandom = new System.Random(123);
+    private static readonly System.Random getrandom = new System.Random(123);
 
     [SerializeField] Text textIntroComponent;
     [SerializeField] Text textStoryComponent;
