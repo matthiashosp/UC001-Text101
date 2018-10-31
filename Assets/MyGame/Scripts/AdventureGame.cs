@@ -13,6 +13,7 @@ public class AdventureGame : MonoBehaviour
 {
     const int MAXSTATERESCUE = 30;
     const int MAXDEHYDRATION = 20;
+    const string INFOALARM = "Info.Alarm";
 
     private static readonly System.Random getrandom = new System.Random(123);
 
@@ -132,7 +133,7 @@ public class AdventureGame : MonoBehaviour
 
         }
 
-        if (nextState.name == "Info.Alarm")
+        if (nextState.name == INFOALARM)
         {
             ResetValues();
             Debug.Log("Counters Reseted + " + passedStates + " " + collectedWool + " " + dehydration);
