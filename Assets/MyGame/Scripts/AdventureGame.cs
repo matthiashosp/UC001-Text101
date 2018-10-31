@@ -12,6 +12,7 @@ using UnityEditor;
 public class AdventureGame : MonoBehaviour
 {
     const int MAXSTATERESCUE = 30;
+    const int MAXDEHYDRATION = 20;
 
     private static readonly System.Random getrandom = new System.Random(123);
 
@@ -109,7 +110,7 @@ public class AdventureGame : MonoBehaviour
     {
 
         passedStates += 1;
-        dehydration = (dehydration < 20) ? dehydration += 0.5 : dehydration = 20;
+        dehydration = (dehydration < MAXDEHYDRATION) ? dehydration += 0.5 : dehydration = MAXDEHYDRATION;
 
         if (passedStates == MAXSTATERESCUE)
         {
@@ -119,7 +120,7 @@ public class AdventureGame : MonoBehaviour
             return rescue;
         }
 
-        if (dehydration == 20)
+        if (dehydration == MAXDEHYDRATION)
         {
             Debug.Log("Exit Dehydration " + dehydration);
             overrideTextComponent = wait = false;
