@@ -27,7 +27,7 @@ public class AdventureGame : MonoBehaviour
     public Text humanStateTxt;
 
 
-    private int passedStatesCount;
+    private int passedStates;
     private int collectedWoolCount;
     private double dehydrationCount;
     private bool wait, overrideTextComponent;
@@ -66,7 +66,7 @@ public class AdventureGame : MonoBehaviour
         actualState = startingState;
         textIntroComponent.text = actualState.GetStateStory();
         textComponentChoices.text = actualState.GetStateStoryMenue();
-        passedStatesCount = 0;
+        passedStates = 0;
         collectedWoolCount = 0;
         dehydrationCount = 0;
         statesUntilRescue = 30;
@@ -100,7 +100,7 @@ public class AdventureGame : MonoBehaviour
 
     private void ResetCounters()
     {
-        passedStatesCount = 0;
+        passedStates = 0;
         collectedWoolCount = 0;
         dehydrationCount = 0;
     }
@@ -108,13 +108,13 @@ public class AdventureGame : MonoBehaviour
     private State doTransition(State currentState, State nextState)
     {
 
-        passedStatesCount += 1;
+        passedStates += 1;
         dehydrationCount = (dehydrationCount < 20) ? dehydrationCount += 0.5 : dehydrationCount = 20;
 
-        if (passedStatesCount == statesUntilRescue)
+        if (passedStates == statesUntilRescue)
         {
             overrideTextComponent = wait = false;
-            Debug.Log("reached passed state counts: " + passedStatesCount);
+            Debug.Log("reached passed state counts: " + passedStates);
             var rescue = Resources.Load<State>("States/Rescue");
             return rescue;
         }
@@ -134,7 +134,7 @@ public class AdventureGame : MonoBehaviour
         if (nextState.name == "Info.Alarm")
         {
             ResetCounters();
-            Debug.Log("Counters Reseted + " + passedStatesCount + " " + collectedWoolCount + " " + dehydrationCount);
+            Debug.Log("Counters Reseted + " + passedStates + " " + collectedWoolCount + " " + dehydrationCount);
         }
 
         if (currentState.name != nextState.name)
