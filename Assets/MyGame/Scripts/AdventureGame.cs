@@ -22,6 +22,8 @@ public class AdventureGame : MonoBehaviour
     const string COLLECTINFO = "Collect.Info";
     const string KNITINFO = "Knit.Info";
     const string FIGHTDO = "Fight.Do";
+    const string INFOHUMAN = "Info.Human";
+
 
     //private static readonly System.Random getrandom = new System.Random(123);
 
@@ -173,7 +175,7 @@ public class AdventureGame : MonoBehaviour
             overrideTextComponent = false;
         }
 
-        if (currentState.name == "Info.Human" && nextState.name == INFODONE)
+        if (currentState.name == INFOHUMAN && nextState.name == INFODONE)
         {
             overrideTextComponent = true;
             overrideText = "Notification: Crime scene investigation revealed that robots destroyed all water inventories and water sponge warehouses. " + "\n \n" +
