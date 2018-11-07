@@ -13,6 +13,7 @@ public class AdventureGame : MonoBehaviour
 {
     const int MAXSTATERESCUE = 30;
     const int MAXDEHYDRATION = 20;
+    const double DEADDEHYDRATION = 100;
 
     const string INFOALARM = "Info.Alarm";
     const string KNITDO = "Knit.Do";
@@ -136,7 +137,7 @@ public class AdventureGame : MonoBehaviour
         {
             Debug.Log("Exit Dehydration " + dehydration);
             overrideTextComponent = wait = false;
-            dehydration = 100;
+            dehydration = DEADDEHYDRATION;
 
             //return (State)AssetDatabase.LoadAssetAtPath("Assets/MyGame/States/Dead.Dehydration.asset", typeof(State));
             var deadDehyd = Resources.Load<State>("States/Dead.Dehydration");
