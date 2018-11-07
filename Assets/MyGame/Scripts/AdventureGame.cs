@@ -13,9 +13,13 @@ public class AdventureGame : MonoBehaviour
 {
     const int MAXSTATERESCUE = 30;
     const int MAXDEHYDRATION = 20;
-    const string INFOALARM = "Info.Alarm";
 
-    private static readonly System.Random getrandom = new System.Random(123);
+    const string INFOALARM = "Info.Alarm";
+    const string KNITDO = "Knit.Do";
+    const string FIGHTATTACK = "Fight.Attack";
+    const string COLLECTDO = "Collect.Do";
+
+    //private static readonly System.Random getrandom = new System.Random(123);
 
     public Text textIntroComponent;
     public Text textStoryComponent;
@@ -36,6 +40,7 @@ public class AdventureGame : MonoBehaviour
     private bool wait, overrideTextComponent;
     private bool infoOn;
     private string overrideText;
+
 
 
     private State actualState;
@@ -68,9 +73,7 @@ public class AdventureGame : MonoBehaviour
         actualState = startingState;
         textIntroComponent.text = actualState.GetStateStory();
         textComponentChoices.text = actualState.GetStateStoryMenue();
-
         ResetValues();
-
         //statesUntilRescue = 30;
         wait = false;
         Debug.Log("Enter");
@@ -147,7 +150,7 @@ public class AdventureGame : MonoBehaviour
 
         if (currentState.name == nextState.name)
         {
-            if (nextState.name == "Knit.Do" || nextState.name == "Fight.Attack" || nextState.name == "Collect.Do")
+            if (nextState.name == KNITDO || nextState.name == FIGHTATTACK || nextState.name == COLLECTDO)
             {
                 wait = false;
                 overrideText = "reset in do|attack";
@@ -190,7 +193,7 @@ public class AdventureGame : MonoBehaviour
             overrideTextComponent = false;
         }
 
-        if ((currentState.name == "Collect.Info" || currentState.name == "Collect.Do") && nextState.name == "Collect.Do")
+        if ((currentState.name == "Collect.Info" || currentState.name == COLLECTDO) && nextState.name == COLLECTDO)
         {
             int nbrWool = RandomState.getrandom.Next(1, 3);
             collectedWool += nbrWool;
@@ -200,7 +203,7 @@ public class AdventureGame : MonoBehaviour
         }
 
 
-        if ((currentState.name == "Knit.Info" || nextState.name == "Knit.Do") && nextState.name == "Knit.Do")
+        if ((currentState.name == "Knit.Info" || nextState.name == KNITDO) && nextState.name == KNITDO)
         {
             if (collectedWool >= 2)
             {
@@ -220,7 +223,7 @@ public class AdventureGame : MonoBehaviour
             return nextState;
         }
 
-        if (currentState.name == "Knit.Do" && currentState.name == "Collect.Info")
+        if (currentState.name == KNITDO && currentState.name == "Collect.Info")
         {
             overrideTextComponent = false;
         }
