@@ -17,6 +17,7 @@ public class AdventureGame : MonoBehaviour
     const int MINWOOLKNIT = 2;
     const int COSTWOOL = 2;
     const double DRINKWATER = 1.5;
+    const double DEHYDRATIONSTEP = 0.5;
 
     const string INFOALARM = "Info.Alarm";
     const string KNITDO = "Knit.Do";
@@ -126,7 +127,7 @@ public class AdventureGame : MonoBehaviour
     {
 
         passedStates += 1;
-        dehydration = (dehydration < MAXDEHYDRATION) ? dehydration += 0.5 : dehydration = MAXDEHYDRATION;
+        dehydration = (dehydration < MAXDEHYDRATION) ? dehydration += DEHYDRATIONSTEP : dehydration = MAXDEHYDRATION;
 
         if (passedStates == MAXSTATERESCUE)
         {
