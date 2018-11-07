@@ -20,6 +20,8 @@ public class AdventureGame : MonoBehaviour
     const string COLLECTDO = "Collect.Do";
     const string INFODONE = "Info.Done";
     const string COLLECTINFO = "Collect.Info";
+    const string KNITINFO = "Knit.Info";
+    const string FIGHTDO = "Fight.Do";
 
     //private static readonly System.Random getrandom = new System.Random(123);
 
@@ -205,7 +207,7 @@ public class AdventureGame : MonoBehaviour
         }
 
 
-        if ((currentState.name == "Knit.Info" || nextState.name == KNITDO) && nextState.name == KNITDO)
+        if ((currentState.name == KNITINFO || nextState.name == KNITDO) && nextState.name == KNITDO)
         {
             if (collectedWool >= 2)
             {
@@ -230,7 +232,7 @@ public class AdventureGame : MonoBehaviour
             overrideTextComponent = false;
         }
 
-        if (currentState.name == "Fight.Do" && (nextState.name == COLLECTINFO || nextState.name == "Fight.Do"))
+        if (currentState.name == FIGHTDO && (nextState.name == COLLECTINFO || nextState.name == FIGHTDO))
         {
 
             Debug.Log("wool before Fight in kg: " + collectedWool);
